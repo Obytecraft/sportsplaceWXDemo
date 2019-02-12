@@ -7,5 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "obed.oseifrimpong@decathlon.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@springboard/core": "^0.11.0",
+    "vant-weapp": "^0.5.3"
+  }
 }

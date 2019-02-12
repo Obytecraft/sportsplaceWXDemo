@@ -1,19 +1,22 @@
+// import fetch from '../../utils/fetch.js' 
 //index.js
-//获取应用实例
+//to get the instance of the app. 
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    active: 0,
+    sports: []
   },
-  //事件处理函数
+
+  // this is the event handler
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: ''
     })
+  },
+  onChange(event) {
+    // wx.switchTab()
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -22,8 +25,7 @@ Page({
         hasUserInfo: true
       })
     } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
+      
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
@@ -31,7 +33,6 @@ Page({
         })
       }
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
@@ -41,8 +42,30 @@ Page({
           })
         }
       })
+    //this.getSports();
     }
   },
+
+  // get all sports 
+  getSports(){
+    wx.$api.getSportList({
+      loading: true,
+      method: 'GET',
+      dataType: 'json',
+      success: res => {
+        // JSON.stringify(res)
+        console.log(res)
+        let sports = res ? res : []
+        this.setData({
+          sports
+        })
+      }
+    })
+  },
+
+
+  //get a place 
+  getPlaceByOrigin(){},
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -50,5 +73,5 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
 })

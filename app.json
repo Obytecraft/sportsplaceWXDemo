@@ -1,12 +1,46 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/settings/settings",
+    "pages/sportDetail/sportDetail",
+    "pages/place/place",
+    "pages/placeDetail/placeDetail",
+    "pages/sport/sport",
+    "pages/search/search"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "Authorize location"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Decathlon Sports Places",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50
+  },
+  "networkTimeout": {
+    "request": 100000
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "selectedColor": "#3880be",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Home"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "Search"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "Settings"
+      }
+    ]
   }
 }

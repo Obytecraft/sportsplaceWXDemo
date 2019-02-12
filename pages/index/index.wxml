@@ -1,13 +1,14 @@
 <!--index.wxml-->
-<view class="container" style='background-image: url(../../images/wel-image.jpg)'>
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<scroll-view class="container" 
+  scroll-y
+  enable-back-to-top = "true"
+  upper-threshold="0"
+  lower-threshold="0"
+>
+  <view class="data-wrapper">
+    <van-row class="row-data" gutter="10">
+      <!-- <van-col data-index="{{index}}" wx:for="{{sports}}" wx:key="{{index}}"span="8">{{ sports }}</van-col> -->
+    </van-row>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view>
+</scroll-view>
+  
