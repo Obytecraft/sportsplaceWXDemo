@@ -11,13 +11,15 @@
   bind:cancel="onCancelSearch"
 />
   <view class="data-wrapper">
-    <van-row class="row-data" gutter="10">
+    <!-- <van-row class="row-data" gutter="10">
       <van-col 
       wx:for="{{sports}}" 
       wx:key="{{index}}" 
       data-index="{{index}}"
       span="8">{{ sports }}</van-col>
-    </van-row>
+    </van-row> -->
+
+    
   </view>
 </scroll-view>
   

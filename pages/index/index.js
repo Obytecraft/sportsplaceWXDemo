@@ -50,7 +50,7 @@ Page({
           })
         }
       })
-    this.getSports();
+    //this.getSports();
     }
   },
 

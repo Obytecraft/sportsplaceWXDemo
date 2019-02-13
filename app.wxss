@@ -1,4 +1,6 @@
+/* @import '@springboard/core/dist/springboard.min.css' */
 /**app.wxss**/
+/* @media */
 .container {
   height: 100%;
   display: flex;
