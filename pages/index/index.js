@@ -18,6 +18,14 @@ Page({
   onChange(event) {
     // wx.switchTab()
   },
+
+  onSearch(){
+
+  },
+  onCancelSearch(){
+
+  },
+  
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -42,7 +50,7 @@ Page({
           })
         }
       })
-    //this.getSports();
+    this.getSports();
     }
   },
 
@@ -51,10 +59,11 @@ Page({
     wx.$api.getSportList({
       loading: true,
       method: 'GET',
-      dataType: 'json',
       success: res => {
         // JSON.stringify(res)
-        console.log(res)
+        //console.log(res)
+        // let sports = JSON.stringify(res[1].name).replace(/\"/g,"");
+        // console.log(sports)
         let sports = res ? res : []
         this.setData({
           sports
@@ -62,8 +71,6 @@ Page({
       }
     })
   },
-
-
   //get a place 
   getPlaceByOrigin(){},
   getUserInfo: function(e) {

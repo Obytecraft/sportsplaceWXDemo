@@ -5,9 +5,18 @@
   upper-threshold="0"
   lower-threshold="0"
 >
+<van-search
+  placeholder="Search Sport Place"
+  bind:search="onSearch"
+  bind:cancel="onCancelSearch"
+/>
   <view class="data-wrapper">
     <van-row class="row-data" gutter="10">
-      <!-- <van-col data-index="{{index}}" wx:for="{{sports}}" wx:key="{{index}}"span="8">{{ sports }}</van-col> -->
+      <van-col 
+      wx:for="{{sports}}" 
+      wx:key="{{index}}" 
+      data-index="{{index}}"
+      span="8">{{ sports }}</van-col>
     </van-row>
   </view>
 </scroll-view>

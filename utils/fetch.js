@@ -30,7 +30,7 @@ class Fetch {
       data: config.data,
       header: { ...defaultHeader },
       method: config.method,
-      dataType: 'json',
+      //dataType: 'json',
       success: res => {
         console.log(res.data)
         let response = res.data
