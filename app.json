@@ -1,13 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/search/search",
     "pages/logs/logs",
-    "pages/settings/settings",
-    "pages/sportDetail/sportDetail",
     "pages/place/place",
     "pages/placeDetail/placeDetail",
-    "pages/sport/sport",
-    "pages/search/search"
+    "pages/profile/profile"
   ],
   "permission": {
     "scope.userLocation": {
@@ -30,16 +27,16 @@
     "selectedColor": "#3880be",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "Home"
-      },
-      {
         "pagePath": "pages/search/search",
+        "iconPath": "static/images/menu-sports-black.png",
+        "selectedIconPath": "./static/images/menu-sports-blue.png",
         "text": "Search"
       },
       {
-        "pagePath": "pages/settings/settings",
-        "text": "Settings"
+        "pagePath": "pages/profile/profile",
+        "iconPath": "static/images/menu-user-black.png",
+        "selectedIconPath": "/static/images/menu-user-blue.png",
+        "text": "Profile"
       }
     ]
   }

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-search": "/components/vant-dist/search/index",
+    "i-load-more": "/components/vdist/load-more/index"
+  }
 }

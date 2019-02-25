@@ -1,2 +1,62 @@
-<!--pages/placeDetail/placeDetail.wxml-->
-<text>pages/placeDetail/placeDetail.wxml</text>
+<scroll-view class="container" scroll-y>
+  <view class='UCenter-bg' style="background-image: url('../../static/images/place.jpg')">
+    <!-- <image src='/images/logo.png' class='png' mode='widthFix' /> -->
+      <view class='text-xl' style="font-size: 20px;">{{places.properties.name}}
+        <!-- <text class='text-df'>Website</text> -->
+      </view>
+      <view class='margin-top-sm'>
+        <text>{{distance}} km</text>
+      </view>
+      <view class="top-btn-wrapper">
+        <button class="cu-btn  bg-shadeBottom margin-tb-sm md" bindtap="getDirection"> 
+          <text class="icon-location"></text>
+          </button>
+        <button class="cu-btn  bg-shadeBottom margin-tb-sm md" bindtap="makeCall">
+          <text class="icon-phone"></text>
+          </button>
+      </view>
+      
+    <!-- <image src='https://image.weilanwl.com/gif/wave.gif' mode='scaleToFill' class='gif-wave'></image> -->
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+  <view class="cu-item">
+    <view class='content' data-link='https://github.com/weilanwl/ColorUI'>
+      <text class='icon-addressbook text-blue'></text>
+      <text class='text-blue'>{{places.properties.address_components.address}}</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="icon-time text-blue"></text>
+      <text class='text-blue'>Opening Time</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class='content'>
+      <text class='icon-appreciatefill text-blue'></text>
+      <text class='text-blue'>Ratings</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="icon-global text-blue"></text>
+      <text class='text-blue'>www.decathlon.cn</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="icon-activity text-blue"></text>
+      <view class="content" style="font-size: 50rpx; float:right;" wx:for="{{sportImage}}" wx:for-item="item" wx:key>
+        <image src="../../static/images/sports/icons/blue/{{item.sport_id}}.svg"/>
+      </view>
+      <!-- <text class='text-blue'>Show activities</text> -->
+    </view>
+  </view>
+</view>
+
+<view class="padding-xl">
+  <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="BookPlace">
+    <!-- <text class="icon-ticket"></text>     -->
+    Book Place</button>
+</view>
+</scroll-view>

@@ -1,8 +1,8 @@
-import fetch from './utils/fetch.js'
-import api from './api/index'
+// import fetch from './utils/fetch.js'
+// import api from './api/index'
 import { localStorage } from './utils/util.js'
 
-wx.$api = api
+// wx.$api = api
 //app.js
 App({
   onLaunch: function () {
@@ -18,13 +18,13 @@ App({
       }
     }),
     //not sure about this.
-      wx.getLocation({
-        type: 'wgs84',
-        success: function (res) {
-          var lat = res.latitude
-          var long = res.longitude
-        },
-      })
+      // wx.getLocation({
+      //   type: 'wgs84',
+      //   success: function (res) {
+      //     var lat = res.latitude
+      //     var long = res.longitude
+      //   },
+      // })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -43,6 +43,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    userLocation: null
+    // userLocation: null
   }
 })

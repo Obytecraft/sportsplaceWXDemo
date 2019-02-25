@@ -1,2 +1,25 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<scroll-view scroll-y="true" scroll-with-animation="scroll-with-animation" class="container">
+    <view class="cu-bar fixed bg-yellow light search" style="width:100%;">
+      <view class="search-form radius">
+        <text class="icon-search"/>
+        <input type="text" placeholder="Search Sport" bindinput="search" name="input" />
+      </view>
+    </view>
+  <view class="cu-card article {{isCard?'no-card':''}}">
+    <block wx:for="{{ sports }}" wx:for-item="item"  wx:key="{{id}}">
+      <view class="cu-item shadow">
+          <view class="content" data-id="{{item.id}}" catchtap="toChild">
+            <image src="../../static/images/sports/icons/white/{{item.id}}.svg" mode="aspectFill"/>
+            <view class="desc">
+              <view class="title">{{item.name}}</view>
+            </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <i-load-more tip="Loading" loading="{{ true }}"/>
+</scroll-view>
+
+  <!-- <block wx:for="{{sports}}" wx:for-item="item" wx:key="{{id}}"> -->
+
+  <!-- <view class="content" catchtap="toChild" data-id="{{item.id}"> -->

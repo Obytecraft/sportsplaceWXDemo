@@ -1,1 +1,3 @@
-/* pages/place/place.wxss */
+.container{
+    background-size:cover;
+}
