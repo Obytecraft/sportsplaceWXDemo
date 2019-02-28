@@ -1155,6 +1155,11 @@ button.icon.lg {
   font-size: 30rpx;
 }
 
+.cu-list.menu>.cu-item .content .activities-wrapper {
+  line-height: 1.6em;
+  font-size: 30rpx;
+}
+
 .cu-list.menu>.cu-item button.content {
   padding: 0;
   justify-content: flex-start;
@@ -1222,6 +1227,7 @@ button.icon.lg {
   margin-right: 30rpx;
   border-radius: 20rpx;
   overflow: hidden;
+  margin-bottom: 200rpx !important;
 }
 
 .cu-list.menu-avatar>.cu-item {

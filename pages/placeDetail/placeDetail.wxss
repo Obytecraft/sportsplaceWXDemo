@@ -39,3 +39,18 @@
   mix-blend-mode: screen;  
   height: 100rpx;   
 }
+
+/* .content .activities-wrapper {
+} */
+.content .activites{
+  font-size: 50rpx;
+  float:right;
+}
+
+.btn-wrapper {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  /* background-color: #3880be; */
+  /* color: #3880be !important; */
+}

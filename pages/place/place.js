@@ -28,7 +28,7 @@ Page({
     // let sportID = ''
     
     // get sports Id from localStorage.
-    var sportID =  wx.getStorageSync('selectedSportID')
+    let sportID =  wx.getStorageSync('selectedSportID')
 
     this.places = wx.request({
       loading: this.showLoading(),
@@ -44,6 +44,7 @@ Page({
           this.showToast('Sorry! Network Issue')
         }
         places = res.data.data.features
+        console.log(places)
         this.setData({
           places
         })
@@ -51,7 +52,9 @@ Page({
       fail: (err) => {
         this.showToast(err.errMsg)
       },
-      complete: (res) => { }
+      complete: (res) => { 
+        // if
+      }
     })
   },
 
@@ -105,31 +108,15 @@ Page({
   },
 
   toChild: function (e) {
-    // if () {
-    //   wx.showModal({
-    //     title: 'No Sport Place',
-    //     content: 'Sorry, There is no place for this sport.',
-    //     success: function (res) {
-    //       if (res.confirm) {
-    //         console.log('User clicks confirm')
-    //       } else if (res.cancel) {
-    //         console.log('User clicks cancel')
-    //       }
-    //     }
-    //   })
-    // }
-    //  else {
     wx.navigateTo({
-      url: '../placeDetail/placeDetail?name=' + e.currentTarget.dataset.item
-      // use value of selected sport to search for the place
+      url: '../placeDetail/placeDetail?id=' + e.currentTarget.dataset.id
     },
     )
-    console.log(e.currentTarget.dataset.item)
-  },
-  search: function (e) {
-    var that = this
-    that.setData({
-      inputValue: e.detail.value
+    let placeId = e.currentTarget.dataset.id
+    console.log(e.currentTarget.dataset.id)
+    wx.setStorage({
+      key: 'placeId',
+      data: placeId,
     })
   },
 

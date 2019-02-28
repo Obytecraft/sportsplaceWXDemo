@@ -1,3 +1,5 @@
+import apiUrl from '../../config/apiConfig'
+
 // pages/placeDetail/placeDetail.js
 Page({
 
@@ -12,7 +14,53 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    var that = this
+    // variables
+    let places = []
+    let lat = -73.582
+    let long = 45.511
+    let origin = lat + ',' + long
+    let radius = 99
+    // let sportID = ''
 
+    // get sports Id from localStorage.
+    let index = wx.getStorageSync('placeId')
+    let sportID = wx.getStorageSync('selectedSportID')
+    console.log(index)
+
+    this.places = wx.request({
+      loading: this.showLoading(),
+      url: apiUrl.BASEURL + `/places?origin=${origin}&radius=${radius}&sports=${sportID}`,
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: (res) => {
+        if (res.statusCode == 200) {
+          this.hideLoading()
+        } else {
+          this.showToast('Sorry! Network Issue')
+        }
+        places = res.data.data.features
+        let sportImage = places[index].properties.activities
+        let tags = places[index].properties.activities
+        let distance = Math.round(places[index].properties.proximity)
+        console.log(places[index])
+
+        this.setData({
+          places: places[index],
+          distance,
+          sportImage,
+          tags
+        })
+      },
+      fail: (err) => {
+        this.showToast(err.errMsg)
+      },
+      complete: (res) => {
+        // if
+      }
+    })
   },
 
   /**
@@ -83,8 +131,10 @@ Page({
     })
   },
   makeCall: function (e) {
+    let number = this.data.places.properties.contact_details.phone
+    console.log(number)
     wx.makePhoneCall({
-      phoneNumber: '1340000'
+      phoneNumber: number
     })
   },
 
@@ -114,6 +164,27 @@ Page({
           console.log('Cancel')
         }
       }
+    })
+  },
+
+  showLoading: function () {
+    wx.showLoading({
+      title: 'Loading',
+      mask: true
+    })
+  },
+
+  hideLoading: function () {
+    setTimeout(() => {
+      wx.hideLoading()
+    }, 500)
+  },
+
+  showToast: function (title) {
+    wx.showToast({
+      title: title || 'Sorry, there has been a network issue, Please try again later',
+      icon: 'none',
+      duration: 1500
     })
   }
 })

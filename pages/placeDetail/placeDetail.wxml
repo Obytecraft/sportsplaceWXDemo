@@ -28,7 +28,7 @@
   <view class="cu-item">
     <view class="content">
       <text class="icon-time text-blue"></text>
-      <text class='text-blue'>Opening Time</text>
+      <text class='text-blue'> Mon - Sun at 7:00am - 7:00pm </text>
     </view>
   </view>
   <view class="cu-item">
@@ -39,24 +39,38 @@
   </view>
   <view class="cu-item">
     <view class="content">
-      <text class="icon-global text-blue"></text>
-      <text class='text-blue'>www.decathlon.cn</text>
+      <text class="icon-phone text-blue"></text>
+      <block wx:if="{{places.properties.contact_details.phone == ' '}}"> 
+            <text class='text-blue'>No phone</text>
+      </block>
+      <text class='text-blue'>{{places.properties.contact_details.phone}}</text>
     </view>
   </view>
+  <!-- <view class="cu-item">
+    <view class='content' wx:for="{{tags}}" wx:for-item="item" wx:key>
+      <text class='text-blue'>{{item.tags}}</text>
+    </view>
+  </view> -->
   <view class="cu-item">
-    <view class="content">
-      <text class="icon-activity text-blue"></text>
-      <view class="content" style="font-size: 50rpx; float:right;" wx:for="{{sportImage}}" wx:for-item="item" wx:key>
-        <image src="../../static/images/sports/icons/blue/{{item.sport_id}}.svg"/>
+    <view class="content activities-wrapper flex-wrp" style="display: block;">
+      <view class="" style="width:50rpx; float:left;">
+        <text class="icon-activity text-blue" style=""></text>
       </view>
-      <!-- <text class='text-blue'>Show activities</text> -->
+      <!-- <text class='text-blue'>Activities</text> -->
+      <view style="" class="content" style="width: 500rpx; float:right;">
+        <view class="content" style='float:right; font-size: 50rpx !important;' wx:for="{{sportImage}}" wx:for-item="item" wx:key>
+            <image src="../../static/images/sports/icons/blue/{{item.sport_id}}.svg"/>
+        </view>
+        </view>
     </view>
   </view>
+</view>
+<view class='btn-wrapper'>
+  <view class="padding-sm">
+    <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="BookPlace">
+      <!-- <text class="icon-ticket"></text>     -->
+      Book Place</button>
+</view>
 </view>
 
-<view class="padding-xl">
-  <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="BookPlace">
-    <!-- <text class="icon-ticket"></text>     -->
-    Book Place</button>
-</view>
 </scroll-view>

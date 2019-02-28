@@ -2,28 +2,30 @@
     scroll-y
     class="container">
       <view class="cu-card case {{isCard?'no-card':''}}">
-        <view wx:for="{{places}}" wx:for-item="item" wx:key class="cu-item shadow" bindtap='toChild'>
-          <view class='image'>
-            <image src="../../static/images/place.jpg" mode="widthFix"></image>
-            <view class="cu-tag bg-blue">Test</view>
-            <view class='cu-bar bg-shadeBottom' style='font-size:20px;'>{{item.properties.name}}</view>
-          </view>
-          <view class="cu-list menu menu-avatar">
-            <view class="cu-item">
-              <view class="cu-avatar round lg" style="background-image:url('../../static/images/place.jpg');"></view>
-                <view class='content flex-sub'>
-                  <view class='text-grey'>{{item.properties.address_components.city}}</view>
-                    <view class='text-gray text-sm flex justify-between'> 
-                      {{item.properties.address_components.address}}
-                    <view class="text-gray text-sm">
-                      <text class="icon-attentionfill"></text> 10
-                      <text class="icon-appreciatefill"></text> 20
-                      <text class="icon-messagefill"></text> 30
+        <block wx:for="{{places}}" wx:for-item="item" wx:key="{{index}}">
+          <view class="cu-item shadow" data-id="{{index}}" catchtap="toChild">
+            <view class='image'>
+              <image src="../../static/images/place.jpg" mode="widthFix"></image>
+              <view class="cu-tag bg-blue">Test</view>
+              <view class='cu-bar bg-shadeBottom' style='font-size:20px;'>{{item.properties.name}}</view>
+            </view>
+            <view class="cu-list menu menu-avatar">
+              <view class="cu-item">
+                <view class="cu-avatar round lg" style="background-image:url('../../static/images/place.jpg');"></view>
+                  <view class='content flex-sub'>
+                    <view class='text-grey'>{{item.properties.address_components.city}}</view>
+                      <view class='text-gray text-sm flex justify-between'> 
+                        {{item.properties.address_components.address}}
+                      <view class="text-gray text-sm">
+                        <text class="icon-attentionfill"></text> 10
+                        <text class="icon-appreciatefill"></text> 20
+                        <text class="icon-messagefill"></text> 30
+                    </view>
                   </view>
                 </view>
               </view>
             </view>
           </view>
-        </view>
+        </block>
       </view>   
   </scroll-view>
