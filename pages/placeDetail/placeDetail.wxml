@@ -21,7 +21,7 @@
 
     <!-- <image src='https://image.weilanwl.com/gif/wave.gif' mode='scaleToFill' class='gif-wave'></image> -->
   </view>
-  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+  <view class="cu-list menu card-menu margin-top-xl shadow-lg" style='margin-bottom:200rpx !important;'>
     <view class="cu-item">
       <view class='content' data-link='https://github.com/weilanwl/ColorUI'>
         <text class='icon-addressbook text-blue'></text>

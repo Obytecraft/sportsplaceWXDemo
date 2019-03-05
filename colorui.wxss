@@ -1227,7 +1227,7 @@ button.icon.lg {
   margin-right: 30rpx;
   border-radius: 20rpx;
   overflow: hidden;
-  margin-bottom: 200rpx !important;
+  /* margin-bottom: 200rpx !important; */
 }
 
 .cu-list.menu-avatar>.cu-item {

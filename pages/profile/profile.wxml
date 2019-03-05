@@ -9,42 +9,42 @@
         <view class="title2">{{userInfo.nickName}}</view>
       </view>
     </view>
-    <view class="cu-list menu card-menu margin-top-xl margin-bottom-sm shadow-xl" style='margin-top: 150rpx !important;'>
-      <view class="cu-item bgc">
-        <view class='content'>
-          <text class='icon-phone text-white'></text>
-          <text class='text-white'>GitHub</text>
-        </view>
+  </view>
+  <view class="cu-list menu card-menu margin-bottom-xs shadow-xl" style='margin-top: 150rpx !important;'>
+    <view class="cu-item bgc">
+      <view class='content'>
+        <text class='icon-phone text-white'></text>
+        <text class='text-white'>GitHub</text>
       </view>
-      <view class="cu-item bgc">
-        <view class='content'>
-          <text class='icon-github text-white'></text>
-          <text class='text-white'>GitHub</text>
-        </view>
+    </view>
+    <view class="cu-item bgc">
+      <view class='content'>
+        <text class='icon-github text-white'></text>
+        <text class='text-white'>GitHub</text>
       </view>
-      <view class="cu-item bgc">
-        <view class='content'>
-          <text class='icon-addressbook text-white'></text>
-          <text class='text-white'>{{userInfo.province}} {{userInfo.city}}</text>
-        </view>
+    </view>
+    <view class="cu-item bgc">
+      <view class='content'>
+        <text class='icon-addressbook text-white'></text>
+        <text class='text-white'>{{userInfo.province}} {{userInfo.city}}</text>
       </view>
-      <view class="cu-item bgc">
-        <view class='content'>
-          <text class='icon-github text-white'></text>
-          <text class='text-white'>GitHub</text>
-        </view>
+    </view>
+    <view class="cu-item bgc">
+      <view class='content'>
+        <text class='icon-github text-white'></text>
+        <text class='text-white'>GitHub</text>
       </view>
-      <view class="cu-item bgc">
-        <view class='content'>
-          <text class='icon-github text-white'></text>
-          <text class='text-white'>GitHub</text>
-        </view>
+    </view>
+    <view class="cu-item bgc">
+      <view class='content'>
+        <text class='icon-github text-white'></text>
+        <text class='text-white'>GitHub</text>
       </view>
-      <view class="cu-item bgc">
-        <view class='content'>
-          <text class='icon-github text-white'></text>
-          <text class='text-white'>GitHub</text>
-        </view>
+    </view>
+    <view class="cu-item bgc">
+      <view class='content'>
+        <text class='icon-github text-white'></text>
+        <text class='text-white'>GitHub</text>
       </view>
     </view>
   </view>
