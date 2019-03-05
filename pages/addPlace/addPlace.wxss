@@ -1,0 +1,7 @@
+.btn-wrapper {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  /* background-color: #3880be; */
+  /* color: #3880be !important; */
+}

@@ -1,76 +1,79 @@
 <scroll-view class="container" scroll-y>
   <view class='UCenter-bg' style="background-image: url('../../static/images/place.jpg')">
     <!-- <image src='/images/logo.png' class='png' mode='widthFix' /> -->
-      <view class='text-xl' style="font-size: 20px;">{{places.properties.name}}
-        <!-- <text class='text-df'>Website</text> -->
-      </view>
-      <view class='margin-top-sm'>
-        <text>{{distance}} km</text>
-      </view>
-      <view class="top-btn-wrapper">
-        <button class="cu-btn  bg-shadeBottom margin-tb-sm md" bindtap="getDirection"> 
-          <text class="icon-location"></text>
-          </button>
-        <button class="cu-btn  bg-shadeBottom margin-tb-sm md" bindtap="makeCall">
-          <text class="icon-phone"></text>
-          </button>
-      </view>
-      
+    <view class='text-xl' style="font-size: 20px;">{{places.properties.name}}
+      <!-- <text class='text-df'>Website</text> -->
+    </view>
+    <view class='margin-top-sm'>
+      <block wx:if="{{distance < 0}}">
+        <text>{{dismetres}} m</text>
+      </block>
+      <text>{{distance}} km</text>
+    </view>
+    <view class="top-btn-wrapper">
+      <button class="cu-btn bg-white margin-lr-xl xl" bindtap="getDirection">
+        <text class="icon-location text-blue"></text>
+      </button>
+      <button class="cu-btn bg-white margin-lr-xl xl" bindtap="makeCall">
+        <text class="icon-phone text-blue" ></text>
+      </button>
+    </view>
+
     <!-- <image src='https://image.weilanwl.com/gif/wave.gif' mode='scaleToFill' class='gif-wave'></image> -->
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
-  <view class="cu-item">
-    <view class='content' data-link='https://github.com/weilanwl/ColorUI'>
-      <text class='icon-addressbook text-blue'></text>
-      <text class='text-blue'>{{places.properties.address_components.address}}</text>
+    <view class="cu-item">
+      <view class='content' data-link='https://github.com/weilanwl/ColorUI'>
+        <text class='icon-addressbook text-blue'></text>
+        <text class='text-blue'>{{places.properties.address_components.address}}</text>
+      </view>
     </view>
-  </view>
-  <view class="cu-item">
-    <view class="content">
-      <text class="icon-time text-blue"></text>
-      <text class='text-blue'> Mon - Sun at 7:00am - 7:00pm </text>
+    <view class="cu-item">
+      <view class="content">
+        <text class="icon-time text-blue"></text>
+        <text class='text-blue'> Mon - Sun at 7:00am - 7:00pm </text>
+      </view>
     </view>
-  </view>
-  <view class="cu-item">
-    <view class='content'>
-      <text class='icon-appreciatefill text-blue'></text>
-      <text class='text-blue'>Ratings</text>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-appreciatefill text-blue'></text>
+        <text class='text-blue'>Ratings</text>
+      </view>
     </view>
-  </view>
-  <view class="cu-item">
-    <view class="content">
-      <text class="icon-phone text-blue"></text>
-      <block wx:if="{{places.properties.contact_details.phone == ' '}}"> 
-            <text class='text-blue'>No phone</text>
-      </block>
-      <text class='text-blue'>{{places.properties.contact_details.phone}}</text>
+    <view class="cu-item">
+      <view class="content">
+        <text class="icon-phone text-blue"></text>
+        <block wx:if="{{places.properties.contact_details.phone == ' '}}">
+          <text class='text-blue'>No phone</text>
+        </block>
+        <text class='text-blue'>{{places.properties.contact_details.phone}}</text>
+      </view>
     </view>
-  </view>
-  <!-- <view class="cu-item">
+    <!-- <view class="cu-item">
     <view class='content' wx:for="{{tags}}" wx:for-item="item" wx:key>
       <text class='text-blue'>{{item.tags}}</text>
     </view>
   </view> -->
-  <view class="cu-item">
-    <view class="content activities-wrapper flex-wrp" style="display: block;">
-      <view class="" style="width:50rpx; float:left;">
-        <text class="icon-activity text-blue" style=""></text>
+    <view class="cu-item">
+      <view class="content activities-wrapper flex-wrp" style="display: block;">
+        <view class="" style="width:50rpx; float:left;">
+          <text class="icon-activity text-blue" style=""></text>
+        </view>
+        <!-- <text class='text-blue'>Activities</text> -->
+        <view style="" class="content" style="width: 500rpx; float:right;">
+          <view class="content" style='float:right; font-size: 50rpx !important;' wx:for="{{sportImage}}" wx:for-item="item" wx:key>
+            <image src="../../static/images/sports/icons/blue/{{item.sport_id}}.svg" />
+          </view>
+        </view>
       </view>
-      <!-- <text class='text-blue'>Activities</text> -->
-      <view style="" class="content" style="width: 500rpx; float:right;">
-        <view class="content" style='float:right; font-size: 50rpx !important;' wx:for="{{sportImage}}" wx:for-item="item" wx:key>
-            <image src="../../static/images/sports/icons/blue/{{item.sport_id}}.svg"/>
-        </view>
-        </view>
     </view>
   </view>
-</view>
-<view class='btn-wrapper'>
-  <view class="padding-sm">
-    <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="BookPlace">
-      <!-- <text class="icon-ticket"></text>     -->
-      Book Place</button>
-</view>
-</view>
+  <view class='btn-wrapper'>
+    <view class="padding-sm">
+      <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="BookPlace">
+        <!-- <text class="icon-ticket"></text>     -->
+        Book Place</button>
+    </view>
+  </view>
 
 </scroll-view>

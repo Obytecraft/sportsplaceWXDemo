@@ -1,21 +1,24 @@
-<scroll-view scroll-y="true" scroll-with-animation="scroll-with-animation" class="container" bindscrolltolower="loadMoreData">
-    <view class="cu-bar fixed bg-yellow light search" style="width:100%;">
-      <view class="search-form radius">
-        <text class="icon-search"/>
-        <input type="text" placeholder="Search Sport" bindinput="search" name="input" value="{{inputValue}}" />
-      </view>
+<scroll-view scroll-y="true" scroll-with-animation="scroll-with-animation" class="container">
+  <view class="cu-bar fixed bg-yellow light search" style="width:100%;">
+    <view class="search-form radius">
+      <text class="icon-search" />
+      <input type="text" placeholder="Search Sport" confirm-type="search" bindinput='searchSport'></input>
     </view>
+  </view>
   <view class="cu-card article {{isCard?'no-card':''}}">
-    <block wx:for="{{ sports }}" wx:for-item="item" wx:key="{{id}}">
+    <block wx:for="{{ sports }}" wx:for-item="item" wx:key wx:if="{{item.name}}">
       <view class="cu-item shadow">
-          <view class="content" data-id="{{item.id}}" catchtap="toChild">
-            <image src="../../static/images/sports/icons/white/{{item.id}}.svg" mode="aspectFill"/>
-            <view class="desc">
-              <view class="title">{{item.name}}</view>
-            </view>
+        <view class="content" data-id="{{item.id}}" catchtap="toChild">
+          <image src="../../static/images/sports/icons/white/{{item.id}}.svg" mode="aspectFill" />
+          <view class="desc">
+            <view class="title">{{item.name}}</view>
+          </view>
         </view>
       </view>
     </block>
   </view>
-  <i-load-more tip="Loading" loading="{{ true }}"/>
+
+      <!-- <button class="cu-btn block bg-blue margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> Authorize </button> -->
+
+  <!-- <i-load-more tip="Loading" loading="{{ true }}" hidden="{{loadMoreX}}"/> -->
 </scroll-view>

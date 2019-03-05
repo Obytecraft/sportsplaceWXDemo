@@ -1,0 +1,5 @@
+<view class='container' style='justify-content: center;'>
+  <view class="padding-xl">
+    <button class="cu-btn block bg-blue margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> Authorize </button>
+  </view>
+</view>

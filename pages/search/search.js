@@ -1,16 +1,21 @@
 import  apiUrl  from '../../config/apiConfig'
+
+const app = getApp()
 Page({
   /**
    * Page initial data
    */
   data: {
     sports: [],
+    newSport: [],
     sportsID: '',
-    page: 1,
     filteredSport: [],
     inputsearch: ''
   },
 
+  onPageScroll: function (event) {
+    
+  },
 
 
   /**
@@ -59,6 +64,7 @@ Page({
    * Called when page reach bottom
    */
   onReachBottom: function () {
+
   },
 
   /**
@@ -68,13 +74,13 @@ Page({
 
   },
 
-  loadMoreData: function () {
-    this.showLoading()
-    this.setData({
-      page: ++this.data.page
-    })
-    this.fetchSportsData()
-  },
+  // loadMoreData: function () {
+  //   this.showLoading()
+  //   this.setData({
+  //     page: ++this.data.page
+  //   })
+  //   this.fetchSportsData()
+  // },
 
   fetchSportsData: function() {
     let that = this;
@@ -87,7 +93,6 @@ Page({
         'content-type': 'application/json'
       },
       success: (res) => {
-        // console.log(res)
         if (res.statusCode == 200) {
           
           this.hideLoading()
@@ -95,9 +100,10 @@ Page({
           this.showToast('Sorry! Network Issue')
         }
         sports = res.data ? res.data : []
-        console.log(sports)
+        let newSport = sports;
         this.setData({
-          sports
+          sports,
+          newSport: sports
         })
       },
       fail: (err) => {
@@ -119,30 +125,23 @@ Page({
   },
 
 // search function
-  search: function (e) {
-    let that = this
-    let filteredSport = this.data.sports
-
-    let inputValue = e.detail.value
-    // let searchSports = this.sports.filter()
-    
-    that.setData({
-      inputValue
+  searchSport: function(e) {
+    let key = e.detail.value.toLowerCase();
+    let list = this.data.newSport;
+    let newlist = [];
+    for (let i = 0; i < list.length; i++) {
+      let a = key; //value
+      let b = list[i].name.toLowerCase();
+       if (b.search(a) != -1) {
+        newlist.push(list[i])
+      } else {  
+        //list[i].name = false
+        }
+    }
+    this.setData({
+      sports: newlist
     })
-    console.log(inputValue)
-    // console.log(filteredSport)
-    // filter function 
-    // let filterPlace = this.data.places
-    // function filter (filterPlace, inputValue) {
-    //   var res =""
-    //     for (var j = 0; j<filterPlace.length; j++) {
-    //       if (filterPlace[j].match (inputValue)){
-    //         res = res+filterPlace[j]
-    //       }
-    //     }
-    //     return res
-    // }
-    
+
   },
 
   showLoading: function() {

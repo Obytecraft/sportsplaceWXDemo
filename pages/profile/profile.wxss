@@ -1,1 +1,68 @@
-/* pages/profile/profile.wxss */
+#current {
+  position: relative;
+  margin-top: -40px;
+  width: 100%;
+  height: 200px;
+  color: #fff;
+  background-color: #3880be;
+  text-align: center;
+  transform: skewY(170deg);
+}
+
+#subcurrent {
+  position: absolute;
+  left: 0;
+  top: 55px;
+  width: 100vw;
+  transform: skewY(-170deg);
+}
+
+.title {
+  font-style: italic;
+}
+
+.title2 {
+  font-weight: bold;
+}
+
+.logo {
+  height: 20px;
+  width: 70px;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.element
+{
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+    line-height: 7em;
+    margin: 1em auto;
+    transform: skewY(-10deg);
+    position: relative;
+    overflow: hidden;
+
+}
+
+ .pre-element
+{
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    transform: skewY(+10deg);
+    background-size:800px 500px !important;
+}
+
+.bgc {
+  background-color: #3880be !important;
+}

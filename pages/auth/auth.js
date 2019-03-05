@@ -1,23 +1,29 @@
 const app = getApp()
-// pages/profile/profile.js
+
+// pages/auth/auth.js
 Page({
 
   /**
    * Page initial data
    */
   data: {
-    // for authorization
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
-    
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
-    if (app.globalData.userInfo) {
+    // User authorization
+    let UserInfo = wx.getStorageSync('userInfo')
+
+    if (app.globalData.userInfo == UserInfo) {
+      wx.switchTab({
+        url: '../search/search',
+      })
+    } else if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -30,28 +36,36 @@ Page({
         })
       }
     } else {
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+    wx.getUserInfo({
+      success: res => {
+        app.globalData.userInfo = res.userInfo
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    })
     }
   },
 
   // get user details
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     console.log(e)
     if (app.globalData.userInfo = e.detail.userInfo) {
+      wx.setStorage({
+        key: 'userInfo',
+        data: app.globalData.userInfo,
+      })
+      wx.switchTab({
+        url: '../search/search',
+      })
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       })
     }
   },
+
   /**
    * Lifecycle function--Called when page is initially rendered
    */

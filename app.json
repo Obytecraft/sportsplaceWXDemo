@@ -1,14 +1,17 @@
 {
   "pages": [
     "pages/search/search",
-    "pages/logs/logs",
+    "pages/auth/auth",
     "pages/place/place",
+    "pages/addPlace/addPlace",
+    "pages/profile/profile",
     "pages/placeDetail/placeDetail",
-    "pages/profile/profile"
+    "pages/logs/logs"
+    
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "Authorize location"
+      "desc": "Click Ok to authorize"
     }
   },
   "window": {
@@ -28,14 +31,20 @@
     "list": [
       {
         "pagePath": "pages/search/search",
-        "iconPath": "static/images/menu-sports-black.png",
-        "selectedIconPath": "./static/images/menu-sports-blue.png",
+        "iconPath": "static/images/menu-home-black.png",
+        "selectedIconPath": "static/images/menu-home-blue.png",
         "text": "Search"
+      },
+      {
+        "pagePath": "pages/addPlace/addPlace",
+        "iconPath": "static/images/menu-sports-black.png",
+        "selectedIconPath": "static/images/menu-sports-blue.png",
+        "text": "Add Place"
       },
       {
         "pagePath": "pages/profile/profile",
         "iconPath": "static/images/menu-user-black.png",
-        "selectedIconPath": "/static/images/menu-user-blue.png",
+        "selectedIconPath": "static/images/menu-user-blue.png",
         "text": "Profile"
       }
     ]

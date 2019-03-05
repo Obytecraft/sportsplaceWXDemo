@@ -45,6 +45,28 @@ Page({
         }
         places = res.data.data.features
         console.log(places)
+        if (places.length == 0){
+          wx.showModal({
+            title: 'Sorry! No place found',
+            content: 'Click Okay to create a place or Cancel to return',
+            cancelColor: '#3880be',
+            confirmColor: '#3880be',
+            confirmText: 'Okay',
+            cancelText: 'Cancel',
+            success: (res) => {
+              if (res.confirm) {
+                  wx.switchTab({
+                    url: '../addPlace/addPlace',
+                  })
+              } else if (res.cancel) {
+                wx.switchTab({
+                  url:'../search/search'
+                })
+              }
+            }
+
+          })
+        }
         this.setData({
           places
         })

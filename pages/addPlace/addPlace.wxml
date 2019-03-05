@@ -1,0 +1,10 @@
+<scroll-view>
+ <view class='btn-wrapper'>
+  <view class="padding-sm">
+    <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="addPlace">
+      <!-- <text class="icon-ticket"></text>     -->
+      Add Place
+    </button>
+  </view>
+</view>
+</scroll-view>

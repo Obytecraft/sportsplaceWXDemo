@@ -13,14 +13,17 @@ Page({
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
     // variables
     let places = []
-    let lat = -73.582
-    let long = 45.511
-    let origin = lat + ',' + long
+    let long = -73.582
+    let lat = 45.511
+    let origin = long + ',' + lat
     let radius = 99
+
+    // let longitude =''
+    // let latitude = ''
     // let sportID = ''
 
     // get sports Id from localStorage.
@@ -45,13 +48,21 @@ Page({
         let sportImage = places[index].properties.activities
         let tags = places[index].properties.activities
         let distance = Math.round(places[index].properties.proximity)
+        let dismetres = places[index].properties.proximity / 1000
+        // this.data.longitude = places[index].geometry.coordinates[0]
+        // this.data.latitude = places[index].geometry.coordinates[0]
         console.log(places[index])
+
+
 
         this.setData({
           places: places[index],
           distance,
+          dismetres,
           sportImage,
-          tags
+          tags,
+          // latitude,
+          // longitude
         })
       },
       fail: (err) => {
@@ -66,56 +77,56 @@ Page({
   /**
    * Lifecycle function--Called when page is initially rendered
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page hide
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page unload
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * Page event handler function--Called when user drop down
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * Called when page reach bottom
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * Called when user click on the top right corner to share
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  
+
   BookPlace: function(e) {
     wx.showModal({
       title: 'Available Soon',
-      content: 'Booking Service is not available',
+      content: 'Booking Service will be out soon',
       confirmText: 'Okay',
       // cancelText: 'Cancel',
       confirmColor: '#3880be',
@@ -123,14 +134,15 @@ Page({
       showCancel: false,
       success(res) {
         if (res.confirm) {
+          wx.switchTab({
+            url: '../search/search'
+          })
           console.log('Confirm')
-        } else if (res.cancel) {
-          console.log('Cancel')
         }
       }
     })
   },
-  makeCall: function (e) {
+  makeCall: function(e) {
     let number = this.data.places.properties.contact_details.phone
     console.log(number)
     wx.makePhoneCall({
@@ -147,18 +159,17 @@ Page({
       cancelColor: '#3880be',
       success(res) {
         if (res.confirm) {
-          console.log('Confirm')
           wx.getLocation({
             type: 'gcj02',
-            success(res) {
+            success: function(res) {
               const latitude = res.latitude
               const longitude = res.longitude
               wx.openLocation({
-                latitude,
-                longitude,
+                latitude: latitude,
+                longitude: longitude,
                 scale: 18
               })
-            }
+            },
           })
         } else if (res.cancel) {
           console.log('Cancel')
@@ -167,20 +178,20 @@ Page({
     })
   },
 
-  showLoading: function () {
+  showLoading: function() {
     wx.showLoading({
       title: 'Loading',
       mask: true
     })
   },
 
-  hideLoading: function () {
+  hideLoading: function() {
     setTimeout(() => {
       wx.hideLoading()
     }, 500)
   },
 
-  showToast: function (title) {
+  showToast: function(title) {
     wx.showToast({
       title: title || 'Sorry, there has been a network issue, Please try again later',
       icon: 'none',
