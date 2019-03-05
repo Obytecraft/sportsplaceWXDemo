@@ -48,21 +48,13 @@ Page({
         let sportImage = places[index].properties.activities
         let tags = places[index].properties.activities
         let distance = Math.round(places[index].properties.proximity)
-        let dismetres = places[index].properties.proximity / 1000
-        // this.data.longitude = places[index].geometry.coordinates[0]
-        // this.data.latitude = places[index].geometry.coordinates[0]
-        console.log(places[index])
-
-
-
+        let dismetres = (places[index].properties.proximity * 1000).toFixed(2)
         this.setData({
           places: places[index],
           distance,
           dismetres,
           sportImage,
           tags,
-          // latitude,
-          // longitude
         })
       },
       fail: (err) => {
@@ -122,7 +114,6 @@ Page({
   onShareAppMessage: function() {
 
   },
-
   BookPlace: function(e) {
     wx.showModal({
       title: 'Available Soon',

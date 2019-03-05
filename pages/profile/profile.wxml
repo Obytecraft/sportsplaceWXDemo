@@ -3,10 +3,15 @@
     <view id="current" class="shadow-lg">
       <view id="subcurrent">
         <image class="logo" src="../../static/images/logo.jpg" />
-        <view class="title">
-          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view wx:if="{{!hasUserInfo && canIUse}}" class='padding-sm'>
+          <button class="cu-btn bg-white margin-tb-sm md" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> Authorize </button>
         </view>
-        <view class="title2">{{userInfo.nickName}}</view>
+        <block wx:else>
+          <view class="title">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" />
+          </view>
+          <view class="title2">{{userInfo.nickName}}</view>
+        </block>
       </view>
     </view>
   </view>
@@ -14,13 +19,7 @@
     <view class="cu-item bgc">
       <view class='content'>
         <text class='icon-phone text-white'></text>
-        <text class='text-white'>GitHub</text>
-      </view>
-    </view>
-    <view class="cu-item bgc">
-      <view class='content'>
-        <text class='icon-github text-white'></text>
-        <text class='text-white'>GitHub</text>
+        <text class='text-white'>Phone Number</text>
       </view>
     </view>
     <view class="cu-item bgc">
@@ -31,24 +30,15 @@
     </view>
     <view class="cu-item bgc">
       <view class='content'>
-        <text class='icon-github text-white'></text>
-        <text class='text-white'>GitHub</text>
+        <text class='icon-shop text-white'></text>
+        <text class='text-white'>Nearby Store</text>
       </view>
     </view>
     <view class="cu-item bgc">
       <view class='content'>
-        <text class='icon-github text-white'></text>
-        <text class='text-white'>GitHub</text>
+        <text class='icon-favor text-white'></text>
+        <text class='text-white'>Favourite Sports</text>
       </view>
     </view>
-    <view class="cu-item bgc">
-      <view class='content'>
-        <text class='icon-github text-white'></text>
-        <text class='text-white'>GitHub</text>
-      </view>
-    </view>
-  </view>
-  <view class="padding-xl">
-    <button wx:if="{{!hasUserinfo && canIUse}}" class="cu-btn block bg-blue margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo='getUserInfo'> Authorize </button>
   </view>
 </scroll-view>

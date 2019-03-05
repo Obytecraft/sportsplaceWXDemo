@@ -5,17 +5,15 @@
       <!-- <text class='text-df'>Website</text> -->
     </view>
     <view class='margin-top-sm'>
-      <block wx:if="{{distance < 0}}">
-        <text>{{dismetres}} m</text>
-      </block>
-      <text>{{distance}} km</text>
+      <text wx:if="{{distance > 0}}">{{distance}} km</text>
+      <text wx:else>{{dismetres}} m</text>
     </view>
     <view class="top-btn-wrapper">
       <button class="cu-btn bg-white margin-lr-xl xl" bindtap="getDirection">
         <text class="icon-location text-blue"></text>
       </button>
       <button class="cu-btn bg-white margin-lr-xl xl" bindtap="makeCall">
-        <text class="icon-phone text-blue" ></text>
+        <text class="icon-phone text-blue"></text>
       </button>
     </view>
 
@@ -43,10 +41,12 @@
     <view class="cu-item">
       <view class="content">
         <text class="icon-phone text-blue"></text>
-        <block wx:if="{{places.properties.contact_details.phone == ' '}}">
+        <block wx:if="{{places.properties.contact_details.phone == null}}">
           <text class='text-blue'>No phone</text>
         </block>
-        <text class='text-blue'>{{places.properties.contact_details.phone}}</text>
+        <block wx:else>
+          <text class='text-blue'>{{places.properties.contact_details.phone}}</text>
+        </block>
       </view>
     </view>
     <!-- <view class="cu-item">

@@ -9,8 +9,6 @@ import {
 App({
   onLaunch: function() {
 
-
-
     wx.getStorage({
       key: 'userInfo',
       success: res => {
@@ -24,7 +22,6 @@ App({
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
-        // this.globalData.CustomBar = e.platform == 'android' ? e.statusBarHeight + 50 : e.statusBarHeight + 45;
       }
     })
     // 展示本地存储能力
@@ -38,16 +35,7 @@ App({
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
         }
       }),
-      //not sure about this.
-      // wx.getLocation({
-      //   type: 'wgs84',
-      //   success: function (res) {
-      //     var lat = res.latitude
-      //     var long = res.longitude
-      //   },
-      // })
-      // 获取用户信息
-      wx.getSetting({
+    wx.getSetting({
         success: res => {
           if (res.authSetting['scope.userInfo']) {
             wx.getUserInfo({
@@ -58,13 +46,6 @@ App({
                 }
               }
             })
-            // wx.getLocation({
-            //   type: 'gcj02',
-            //   success: function(res) {
-            //     this.globalData.userLocation = res.userLocation
-
-            //   },
-            // })
           }
         }
       })

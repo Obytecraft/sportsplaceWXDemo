@@ -44,7 +44,6 @@ Page({
           this.showToast('Sorry! Network Issue')
         }
         places = res.data.data.features
-        console.log(places)
         if (places.length == 0){
           wx.showModal({
             title: 'Sorry! No place found',
@@ -135,7 +134,6 @@ Page({
     },
     )
     let placeId = e.currentTarget.dataset.id
-    console.log(e.currentTarget.dataset.id)
     wx.setStorage({
       key: 'placeId',
       data: placeId,
