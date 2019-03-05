@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "van-row": "/components/dist/row/index",
-    "van-col": "/components/dist/col/index",
-    "van-search": "/components/dist/search/index"
-  }
-}

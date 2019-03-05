@@ -17,8 +17,4 @@
       </view>
     </block>
   </view>
-
-      <!-- <button class="cu-btn block bg-blue margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> Authorize </button> -->
-
-  <!-- <i-load-more tip="Loading" loading="{{ true }}" hidden="{{loadMoreX}}"/> -->
 </scroll-view>

@@ -1,4 +1,4 @@
-import  apiUrl  from '../../config/apiConfig'
+import apiUrl from '../../config/apiConfig'
 
 const app = getApp()
 Page({
@@ -13,64 +13,64 @@ Page({
     inputsearch: ''
   },
 
-  onPageScroll: function (event) {
-    
+  onPageScroll: function(event) {
+
   },
 
 
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.fetchSportsData()
   },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page hide
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page unload
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * Page event handler function--Called when user drop down
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * Called when page reach bottom
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * Called when user click on the top right corner to share
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
@@ -94,7 +94,7 @@ Page({
       },
       success: (res) => {
         if (res.statusCode == 200) {
-          
+
           this.hideLoading()
         } else {
           this.showToast('Sorry! Network Issue')
@@ -113,30 +113,28 @@ Page({
   },
 
 
-  toChild: function (e){
+  toChild: function(e) {
     wx.navigateTo({
-          url: '../place/place?id=' + e.currentTarget.dataset.id
-          // use value of selected sport to search for the place
-        },
-    )
-    // console.log(e.currentTarget.dataset.id)
+      url: '../place/place?id=' + e.currentTarget.dataset.id
+    }, )
     let sportsID = e.currentTarget.dataset.id
-    wx.setStorage({key:'selectedSportID', data:sportsID})
+    wx.setStorage({
+      key: 'selectedSportID',
+      data: sportsID
+    })
   },
 
-// search function
+  // search function
   searchSport: function(e) {
     let key = e.detail.value.toLowerCase();
     let list = this.data.newSport;
     let newlist = [];
     for (let i = 0; i < list.length; i++) {
-      let a = key; //value
+      let a = key;
       let b = list[i].name.toLowerCase();
-       if (b.search(a) != -1) {
+      if (b.search(a) != -1) {
         newlist.push(list[i])
-      } else {  
-        //list[i].name = false
-        }
+      }
     }
     this.setData({
       sports: newlist
