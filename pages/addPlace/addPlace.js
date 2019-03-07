@@ -5,14 +5,50 @@ Page({
    * Page initial data
    */
   data: {
+    sportData: [],
+    // picker,
+    index: null
+  },
 
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  sportListModal(e) {
+    this.setData({
+      sportModal: e.currentTarget.dataset.target
+    })
+  },
+
+  hideSportListModal(e) {
+    this.setData({
+      sportModal: null
+    })
+  },
+
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+
+  pickerChange(e) {
+    this.setData({
+      index: e.detail.value
+    })
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    var that = this
+    let sportList = wx.getStorageSync('sportsList')
+    console.log(sportList)
+    this.setData({
+      sportList
+    })
   },
 
   /**

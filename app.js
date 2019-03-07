@@ -4,8 +4,6 @@ import {
   localStorage
 } from './utils/util.js'
 
-// wx.$api = api
-//app.js
 App({
   onLaunch: function() {
 
@@ -52,8 +50,5 @@ App({
   },
   globalData: {
     userInfo: null,
-    // userLocation: null,
-    // userAddress: null
-    // userLocation: null
   }
 })

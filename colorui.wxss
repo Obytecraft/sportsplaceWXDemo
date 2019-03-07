@@ -2183,6 +2183,7 @@ button.icon.lg {
   font-size: 30rpx;
   color: #555;
   padding-right: 20rpx;
+  text-align: left !important;
 }
 
 .cu-form-group>text[class*="icon"] {

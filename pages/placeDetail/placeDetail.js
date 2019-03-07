@@ -1,6 +1,5 @@
 import apiUrl from '../../config/apiConfig'
 
-// pages/placeDetail/placeDetail.js
 Page({
 
   /**
@@ -22,14 +21,9 @@ Page({
     let origin = long + ',' + lat
     let radius = 99
 
-    // let longitude =''
-    // let latitude = ''
-    // let sportID = ''
-
     // get sports Id from localStorage.
     let index = wx.getStorageSync('placeId')
     let sportID = wx.getStorageSync('selectedSportID')
-    console.log(index)
 
     this.places = wx.request({
       loading: this.showLoading(),
@@ -61,7 +55,6 @@ Page({
         this.showToast(err.errMsg)
       },
       complete: (res) => {
-        // if
       }
     })
   },
@@ -144,7 +137,6 @@ Page({
   getDirection: function(e) {
     wx.showModal({
       title: 'Get Direction',
-      // content: 'Click Okay to get direction',
       confirmText: 'Okay',
       cancelText: 'Cancel',
       cancelColor: '#3880be',

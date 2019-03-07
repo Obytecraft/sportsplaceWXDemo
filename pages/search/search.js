@@ -105,6 +105,7 @@ Page({
           sports,
           newSport: sports
         })
+        wx.setStorageSync('sportsList', sports)
       },
       fail: (err) => {
         this.showToast(err.errMsg)
