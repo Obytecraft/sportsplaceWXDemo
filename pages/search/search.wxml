@@ -9,7 +9,7 @@
     <block wx:for="{{ sports }}" wx:for-item="item" wx:key wx:if="{{item.name}}">
       <view class="cu-item shadow">
         <view class="content" data-id="{{item.id}}" catchtap="toChild">
-          <image src="../../static/images/sports/icons/white/{{item.id}}.svg" mode="aspectFill" />
+          <image src="https://community.decathlon.ca/static/sports/icons/white/{{item.id}}.svg" mode="aspectFill" />
           <view class="desc">
             <view class="title">{{item.name}}</view>
           </view>
@@ -18,3 +18,5 @@
     </block>
   </view>
 </scroll-view>
+
+ 

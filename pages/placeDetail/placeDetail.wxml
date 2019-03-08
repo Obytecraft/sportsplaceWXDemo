@@ -62,7 +62,7 @@
         <!-- <text class='text-blue'>Activities</text> -->
         <view style="" class="content" style="width: 500rpx; float:right;">
           <view class="content" style='float:right; font-size: 50rpx !important;' wx:for="{{sportImage}}" wx:for-item="item" wx:key>
-            <image src="../../static/images/sports/icons/blue/{{item.sport_id}}.svg" />
+            <image src="https://community.decathlon.ca/static/sports/icons/blue/{{item.sport_id}}.svg" />
           </view>
         </view>
       </view>

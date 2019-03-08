@@ -7,82 +7,114 @@
           <text class='icon-close text-red'></text>
         </view>
       </view>
-      <scroll-view scroll-y="true" class='padding-xs'>
-        <view class="cu-form-group">
-          <view class='title'>Name</view>
-          <input placeholder="Enter Place Name" class='radius' name='input'></input>
+      <view class="bg-white nav text-center">
+        <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+          {{tabNav[index]}}
         </view>
-        <view class="cu-form-group">
-          <view class='title'>Address</view>
-          <input placeholder="Enter Address" class='radius' name='input'></input>
-          <text class='icon-locationfill text-red'></text>
-        </view>
-        <view class="cu-form-group">
-          <view class='title'>Phone</view>
-          <input placeholder="Enter Number" class='radius' name='input'></input>
-          <view class="cu-capsule radius">
-            <view class='cu-tag bg-blue '>
-              +86
-            </view>
-            <view class="cu-tag line-blue">
-              中国大陆
+      </view>
+      <block wx:if="{{TabCur==0}}">
+        <view class='padding-xs'>
+          <view class="cu-form-group">
+            <view class='title'>Name</view>
+            <input placeholder="Enter Place Name" class='radius' name='input'></input>
+          </view>
+          <view class="cu-form-group">
+            <view class='title'>Address</view>
+            <input placeholder="Enter Address" class='radius' name='input'></input>
+            <text class='icon-locationfill text-red'></text>
+          </view>
+          <view class="cu-form-group">
+            <view class='title'>Phone</view>
+            <input type='number' placeholder="Enter Number" class='radius' name='input'></input>
+            <view class="cu-capsule radius">
+              <view class='cu-tag bg-blue '>
+                +86
+              </view>
+              <view class="cu-tag line-blue">
+                中国大陆
+              </view>
             </view>
           </view>
+          <view class="cu-form-group">
+            <view class='title'>Verification</view>
+            <input type='number' placeholder="Enter Code" class='radius' name='input'></input>
+            <button class='cu-btn bg-blue shadow'>Get Code</button>
+          </view>
         </view>
-        <view class="cu-form-group">
-          <view class='title'>Verification</view>
-          <input placeholder="Enter Code" class='radius' name='input'></input>
-          <button class='cu-btn bg-blue shadow'>Get Code</button>
-        </view>
-        <view class="cu-form-group">
-          <view class='title'>Website</view>
-          <input placeholder="Enter Website" class='radius' name='input'></input>
-        </view>
-        <!-- <view class="cu-form-group">
-          <view class='title'>Activities</view>
-          <input placeholder="Click to select" class='radius' name='input'></input>
-        </view> -->
-
-        <!-- For the choose -->
-        <view class="cu-form-group">
-          <view class='title'>Activities</view>
-          <input placeholder="Select Activities" class='radius' name='input'></input>
-          <button class='cu-btn bg-blue shadow' bindtap='sportListModal' data-target="ChooseModal">Choose</button>
-          <view class="cu-modal bottom-modal {{sportModal=='ChooseModal'?'show':''}}" bindtap='hideSportListModal'>
-            <view class="cu-dialog" catchtap>
-              <view class="cu-bar bg-white">
-                <view class='action text-blue'>Ok</view>
-                <view class='action text-red' bindtap='hideSportListModal'>Cancel</view>
+      </block>
+      <!-- other data -->
+      <block wx:if="{{TabCur==1}}">
+        <view class='padding-xs'>
+          <view class="cu-form-group">
+            <view class='title'>Opening Time</view>
+            <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="TimeChange">
+              <view class="picker">
+                {{time}}
               </view>
-              <view class='grid col-2 padding-sm'>
-                <view wx:for="{{sportList}}" wx:for-item="item" wx:key class='padding-xs'>
-                  <button class='cu-btn blue lg block {{index == item.id?"bg":"line"}}-blue'>{{item.name}}</button>
+            </picker>
+          </view>
+          <view class="cu-form-group">
+            <view class='title'>Other Number</view>
+            <input type='number' placeholder="Enter Number" class='radius' name='input'></input>
+          </view>
+          <view class="cu-form-group">
+            <view class='title'>Website</view>
+            <input placeholder="Enter Website" class='radius' name='input'></input>
+          </view>
+          <view class="cu-form-group">
+            <view class='title'>Activities</view>
+            <input placeholder="Select Activities" class='radius' name='input'></input>
+            <button class='cu-btn bg-blue shadow' bindtap='sportListModal' data-target="ChooseModal">Choose</button>
+            <view class="cu-modal bottom-modal {{sportModal=='ChooseModal'?'show':''}}" bindtap='hideSportListModal'>
+              <view class="cu-dialog" catchtap>
+                <view class="cu-bar bg-white">
+                  <view class='action text-blue'>Ok</view>
+                  <view class='action text-red' bindtap='hideSportListModal'>Cancel</view>
+                </view>
+                <view class='grid col-2 padding-sm'>
+                  <view wx:for="{{sportList}}" wx:for-item="item" wx:key class='padding-xs'>
+                    <button class='cu-btn blue lg block {{index == item.id?"bg":"line"}}-blue'>{{item.name}}</button>
+                  </view>
                 </view>
               </view>
             </view>
           </view>
-        </view>
-
-        <view class="grid col-3 grid-square flex-sub">
-          <view class="padding-xs bg-img" style="background-image:url(https://image.weilanwl.com/img/square-1.jpg);">
-          </view>
-          <view class="padding-xs bg-img" style="background-image:url(https://image.weilanwl.com/img/square-2.jpg);">
-            <view class="cu-tag bg-red">
-              <text class='icon-close'></text>
+          <block wx:if="{{imageList != 0}}">
+            <view class="grid col-3 grid-square flex-sub">
+              <view class="padding-xs bg-img" style="background-image:url('{{imageList[0]}}');">
+                <view class="cu-tag bg-red">
+                  <text class='icon-close'></text>
+                </view>
+              </view>
+              <view class="padding-xs bg-img" style="background-image:url('{{imageList[1]}}');">
+                <view class="cu-tag bg-red">
+                  <text class='icon-close'></text>
+                </view>
+              </view>
+              <view class="padding-xs bg-img" style="background-image:url('{{imageList[2]}}');">
+                <view class="cu-tag bg-red">
+                  <text class='icon-close'></text>
+                </view>
+              </view>
             </view>
-          </view>
-          <view class="padding-xs solids">
-            <text class='icon-cameraadd'></text>
-          </view>
+          </block>
+          <block wx:else="{{tempFilePaths == 0}}">
+            <view class="grid col-3 grid-square flex-sub">
+              <view class="padding-xs solids">
+                <text bindtap="getImages" class='icon-cameraadd'></text>
+              </view>
+            </view>
+          </block>
         </view>
-        <view class="padding-sm">
-          <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="addPlace">
-            Save
-          </button>
-        </view>
-      </scroll-view>
+      </block>
+      <view class="padding-sm">
+        <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap="addPlace">
+          Save
+        </button>
+      </view>
     </view>
   </view>
+
 
   <view class='btn-wrapper'>
     <view class="padding-sm">

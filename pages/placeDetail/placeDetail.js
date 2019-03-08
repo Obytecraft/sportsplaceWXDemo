@@ -54,8 +54,7 @@ Page({
       fail: (err) => {
         this.showToast(err.errMsg)
       },
-      complete: (res) => {
-      }
+      complete: (res) => {}
     })
   },
 
@@ -128,10 +127,21 @@ Page({
   },
   makeCall: function(e) {
     let number = this.data.places.properties.contact_details.phone
-    console.log(number)
-    wx.makePhoneCall({
-      phoneNumber: number
-    })
+    if (number != null) {
+      wx.makePhoneCall({
+        phoneNumber: number
+      })
+    } else {
+      wx.showModal({
+        title: 'Unavailable',
+        content: 'No phone number available',
+        confirmColor: '#3880be',
+        showCancel: false,
+        confirmText: 'Okay'
+      })
+    }
+    // console.log(number)
+
   },
 
   getDirection: function(e) {
@@ -140,6 +150,7 @@ Page({
       confirmText: 'Okay',
       cancelText: 'Cancel',
       cancelColor: '#3880be',
+      confirmColor: '#3880be',
       success(res) {
         if (res.confirm) {
           wx.getLocation({

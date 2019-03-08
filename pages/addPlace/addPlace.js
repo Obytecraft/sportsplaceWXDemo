@@ -6,11 +6,32 @@ Page({
    */
   data: {
     sportData: [],
+    // src: [],
     // picker,
-    index: null
+    index: null,
+    TabCur: 0,
+    tabNav: ['Basic Details', 'More'],
+    time: '12:01',
+    imageList: []
+  },
+
+  //  for time picker
+  TimeChange(e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
+
+  tabSelect(e) {
+    // console.log(e);
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+    })
   },
 
   showModal(e) {
+    // let 
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
@@ -39,13 +60,30 @@ Page({
     })
   },
 
+
+  getImages: function() {
+    var that = this
+    wx.chooseImage({
+      count: 3,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        // var tempFilePaths = res.tempFilePaths
+        // console.log(tempFilePaths)
+        // wx.setStorageSync('images', tempFilePaths)
+        that.setData({
+          imageList: res.tempFilePaths
+        })
+      },
+    })
+  },
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
     let sportList = wx.getStorageSync('sportsList')
-    console.log(sportList)
+    // console.log(sportList)
     this.setData({
       sportList
     })
@@ -54,49 +92,49 @@ Page({
   /**
    * Lifecycle function--Called when page is initially rendered
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page hide
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * Lifecycle function--Called when page unload
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * Page event handler function--Called when user drop down
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * Called when page reach bottom
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * Called when user click on the top right corner to share
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
   addPlace: function() {
@@ -107,9 +145,9 @@ Page({
       confirmText: 'Okay',
       confirmColor: '#3880be',
       success: (res) => {
-       wx.switchTab({
-         url: '../search/search',
-       })
+        wx.switchTab({
+          url: '../search/search',
+        })
       }
     })
   }
